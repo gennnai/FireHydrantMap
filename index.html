@@ -11,6 +11,13 @@
     </style>
 </head>
 <body>
+    <!-- 検索フォームを追加 -->
+<div style="position: absolute; z-index: 1; background: white; padding: 10px;">
+    <input type="text" id="search" placeholder="検索...">
+    <button onclick="search()">検索</button>
+</div>
+<div id='map'></div>
+
 <div id='map'></div>
 <script>
     mapboxgl.accessToken = 'pk.eyJ1IjoiZ2Vubm5haSIsImEiOiJjbHMzM2Vlam4wdGtuMmttdXBid3AwNmJ5In0.rEOk4QI4o5RpdEpbpe-U7g'; // ここにパブリックアクセストークンを設定
