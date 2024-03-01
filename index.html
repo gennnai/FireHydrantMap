@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8' />
+    <title>My Mapbox Map</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; height: 100vh; }
+    </style>
+</head>
+<body>
+<div id='map'></div>
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js'></script>
+<script>
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2Vubm5haSIsImEiOiJjbHMzM2Vlam4wdGtuMmttdXBid3AwNmJ5In0.rEOk4QI4o5RpdEpbpe-U7gß';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v11',
+        center: [139.6917, 35.6895], // 地図の中心点（例: 東京）
+        zoom: 10
+    });
+</script>
+</body>
+</html>
