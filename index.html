@@ -3,8 +3,12 @@
 <head>
     <meta charset='utf-8' />
     <title>My Mapbox Map</title>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' /> //ヴァージョンが3.12
+    <!-- Mapbox GeocoderプラグインのCSSを追加 -->
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css" type="text/css">
     <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
+    <!-- Mapbox GeocoderプラグインのJSを追加 -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js"></script>
     <style>
         body { margin: 0; padding: 0; }
         #map { position: absolute; top: 0; bottom: 0; width: 100%; }
@@ -13,16 +17,24 @@
 <body>
 <div id='map'></div>
 <script>
-    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2Vubm5haSIsImEiOiJjbHMzM2Vlam4wdGtuMmttdXBid3AwNmJ5In0.rEOk4QI4o5RpdEpbpe-U7g'; // ここにパブリックアクセストークンを設定
+    // Mapboxのアクセストークンを設定
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZ2Vubm5haSIsImEiOiJjbHMzM2Vlam4wdGtuMmttdXBid3AwNmJ5In0.rEOk4QI4o5RpdEpbpe-U7g';
+
+    // Mapbox GL JSのマップを作成
     var map = new mapboxgl.Map({
         container: 'map', // 地図を表示する要素のID
         style: 'mapbox://styles/gennnai/clt82xx6o00iq01oi2vgndl8k', // Mapbox Studioで作成したスタイルのURL
-        center: [139.69931641418856, 35.559574259573004], // 地図の中心点（例: 東京）35.559574259573004, 139.69931641418856
+        center: [139.69931641418856, 35.559574259573004], // 地図の中心点
         zoom: 17 // ズームレベル
     });
+
+    // Mapbox Geocoderプラグインを初期化してマップに追加
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        mapboxgl: mapboxgl
+    });
+
+    document.getElementById('map').appendChild(geocoder.onAdd(map));
 </script>
 </body>
 </html>
-
-
-
